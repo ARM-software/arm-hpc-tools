@@ -3,6 +3,7 @@ an installed version of Arm Compiler for HPC and Arm Instruction Emulator.
 
 Usage:
 - Add a valid license to the licenses directory
+- <host> $ make clean
 - <host> $ make interactive
 - <container> $ module avail
 -----------------------------------------------------------------------------------------
@@ -23,3 +24,10 @@ How to access your code
 repository as /code , from within the container.
 - Further code repositoies on the host can be mounted on the container by adding
 '-v /full/native/path':'/container/path'
+
+Feedback
+--------
+This dockerfile isn't an official Arm product, but I'm interested to know if
+it's useful to you, or if you have any issues with it.
+Drop me a line at will.lovett@arm.com
+Thanks! (Will Lovett)
