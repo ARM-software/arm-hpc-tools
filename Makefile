@@ -19,3 +19,4 @@ interactive: $(DOCKER_FLAG)
 .PHONY: clean
 clean:
 	@rm -rf $(DOCKER_FLAG)
+	touch $(ABS_DOCKERFILE)
