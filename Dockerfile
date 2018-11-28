@@ -12,6 +12,15 @@ RUN apt-get update && apt-get install -y \
       wget \
       python \
       python3-pip \
+      libxext6-dbg \
+      libsm-dev \
+      libfreetype6-dev \
+      libxrender-dev \
+      libxrandr-dev \
+      libxfixes-dev \
+      libxcursor-dev \
+      libxinerama-dev \
+      libfontconfig-dev \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /tmp
