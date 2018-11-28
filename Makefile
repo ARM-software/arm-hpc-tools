@@ -4,6 +4,7 @@ DOCKER_FLAG = $(abspath .docker)
 DOCKERFILE ?= Dockerfile
 ABS_DOCKERFILE = $(abspath $(DOCKERFILE))
 ARM_LICENSE_DIR = $(abspath licenses)
+ARM_MODULEFILES_DIR = $(abspath modulefiles)
 
 .PHONY: docker
 docker: $(DOCKER_FLAG)
@@ -14,7 +15,7 @@ $(DOCKER_FLAG): $(ABS_DOCKERFILE)
 
 .PHONY: interactive
 interactive: $(DOCKER_FLAG)
-	@docker run -v $(ROOT_DIR):/code -v $(ARM_LICENSE_DIR):/opt/arm/licenses -it $(CONTAINER_TAG) bash -l
+	@docker run -v $(ROOT_DIR):/code -v $(ARM_LICENSE_DIR):/opt/arm/licenses -v $(ARM_MODULEFILES_DIR)/tools:/opt/arm/modulefiles/tools -it $(CONTAINER_TAG) bash -l
 
 .PHONY: clean
 clean:
