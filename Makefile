@@ -1,5 +1,5 @@
 ROOT_DIR = $(abspath .)
-CONTAINER_TAG = arm_hpc_compiler
+CONTAINER_TAG = arm_hpc_tools
 DOCKER_FLAG = $(abspath .docker)
 DOCKERFILE ?= Dockerfile
 ABS_DOCKERFILE = $(abspath $(DOCKERFILE))
