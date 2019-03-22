@@ -6,6 +6,7 @@ USER root
 ENV DEBIAN_FRONTEND=noninteractive 
 RUN apt-get update && apt-get install -y \
       psmisc \
+      tcl \
       environment-modules \
       nano \
       vim \
@@ -39,6 +40,10 @@ RUN bash -c "wget -q -O- https://armkeil.blob.core.windows.net/developer/Files/d
 # Compiler (and cleanup)
 RUN bash -c "wget -q -O- https://developer.arm.com/-/media/Files/downloads/hpc/arm-allinea-studio/19-1/Ubuntu16.04/Arm-Compiler-for-HPC_19.1_Ubuntu_16.04_aarch64.tar | tar x && ./ARM-Compiler-for-HPC*/*.sh --accept; rm -rf /tmp/*"
 
+# Setup modules
+RUN echo "/opt/arm/modulefiles" >> /usr/share/modules/init/.modulespath
+COPY modulefiles /opt/arm/modulefiles/
+
 # By rebuilding the image from scratch, and copying in the result
 # we save image size
 FROM arm64v8/ubuntu:18.04
@@ -46,7 +51,6 @@ COPY --from=builder / /
 
 RUN useradd -ms /bin/bash user
 USER user
-ENV MODULEPATH /opt/arm/modulefiles
 WORKDIR /home/user
 
 CMD ["bash", "-l"]
